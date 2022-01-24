@@ -1,6 +1,7 @@
 import React from 'react';
 
-const EachMeal = () => {
+const EachIngerdient = ({Ig}) => {
+    console.log(Ig)
     return (
         <div>
             
@@ -8,4 +9,4 @@ const EachMeal = () => {
     );
 };
 
-export default EachMeal;
+export default EachIngerdient;

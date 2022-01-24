@@ -1,10 +1,18 @@
 import React from 'react';
-
-const Meals = () => {
+import { Card, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+const Meals = ({ meal }) => {
+const key = meal.strCategory;
     return (
-        <div>
-            
-        </div>
+        <Link to={'/details/' + key}>
+            <Col md={3}>
+                <div style={{ margin: "10px" }}>
+                    <Card.Img variant="top" src={meal.strCategoryThumb} />
+
+                </div>
+                <p style={{ color: "white", textAlign: "center" }}>{meal.strCategory}</p>
+            </Col>
+        </Link>
     );
 };
 

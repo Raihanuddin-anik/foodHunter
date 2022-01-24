@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Home from './Components/Home/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from './Components/Header/Header';
-import Banner from './Components/Banner/Banner';
+import Home from './Pages/Home/Home';
+import Ingredient from './Pages/Ingredient/Ingredient';
+
 
 function App() {
   return (
@@ -12,6 +12,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/details/:key" element={<Ingredient/>}/>
         </Routes>
       </BrowserRouter>
     </div>
