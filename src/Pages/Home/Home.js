@@ -5,14 +5,17 @@ import MealService from '../../Services/MealService';
 import Banner from '../../Components/Banner/Banner';
 import Header from '../../Components/Header/Header';
 import Meals from '../../Components/Meals/Meals';
+import axios from 'axios';
 
 const Home = () => {
-const [ data, setData] = useState([])
+const [ data, setData] = useState([]);
+console.log(data)
     useEffect(()=>{
-        MealService.getAllMeal().then((res)=>setData(res))
-    })
+        axios.get('http://localhost:3100/Meals')
+            .then(res => setData(res.data))
+    },[])
  
-    console.log(data)
+  
     return (
         <div style={{backgroundColor:"black"}}>
             <Header />

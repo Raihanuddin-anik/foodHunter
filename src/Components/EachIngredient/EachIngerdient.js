@@ -1,11 +1,14 @@
 import React from 'react';
+import { Col, Image, Row } from 'react-bootstrap';
 
-const EachIngerdient = ({Ig}) => {
+const EachIngerdient = ({ Ig }) => {
     console.log(Ig)
     return (
-        <div>
-            
-        </div>
+        
+            <Col md={3}>
+                <Image className='w-100' src={Ig.strMealThumb} />
+            </Col>
+      
     );
 };
 
