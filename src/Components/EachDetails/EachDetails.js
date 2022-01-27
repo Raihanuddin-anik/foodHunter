@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Image, Row } from 'react-bootstrap';
 
-const EachIngerdient = ({ Ig }) => {
+const EachDetails = ({ Ig }) => {
     console.log(Ig)
     return (
         
@@ -12,4 +12,4 @@ const EachIngerdient = ({ Ig }) => {
     );
 };
 
-export default EachIngerdient;
+export default EachDetails;

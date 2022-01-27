@@ -6,21 +6,22 @@ import Banner from '../../Components/Banner/Banner';
 import Header from '../../Components/Header/Header';
 import Meals from '../../Components/Meals/Meals';
 import axios from 'axios';
+import Ingredient from '../../Components/Ingredient/Ingredient';
 
 const Home = () => {
-const [ data, setData] = useState([]);
-console.log(data)
-    useEffect(()=>{
+    const [data, setData] = useState([]);
+    console.log(data)
+    useEffect(() => {
         axios.get('http://localhost:3100/Meals')
             .then(res => setData(res.data))
-    },[])
+    }, [])
+
  
-  
     return (
-        <div style={{backgroundColor:"black"}}>
+        <div style={{ backgroundColor: "black" }}>
             <Header />
             <Banner />
-            <Container>
+            <Container className="mb-5">
                 <Row>
                     {
                         data?.map((meal) => (
@@ -30,7 +31,9 @@ console.log(data)
                     }
                 </Row>
             </Container>
-            
+            <Ingredient/>
+
+
         </div>
     );
 };
