@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 const Meals = ({ meal }) => {
-    const key = meal.strCategory;
+    const key = meal.idMeal;
     return (
 
         <Col md={3}>

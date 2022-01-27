@@ -16,7 +16,7 @@ const Home = () => {
             .then(res => setData(res.data))
     }, [])
 
- 
+   
     return (
         <div style={{ backgroundColor: "black" }}>
             <Header />

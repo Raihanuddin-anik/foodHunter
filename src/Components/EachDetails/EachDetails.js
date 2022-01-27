@@ -1,14 +1,29 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Col, Image, Row } from 'react-bootstrap';
+import OthersMeal from '../OthersMeal/OthersMeal';
 
 const EachDetails = ({ Ig }) => {
-    console.log(Ig)
+    const catagory = Ig.strCategory;
+    const [IgData, setIgData] = useState([]);
+    useEffect(() => {
+        axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${catagory}`)
+            .then((response) => {
+                // handle success
+                setIgData(response.data.meals);
+            })
+
+    }, [catagory])
+    
     return (
-        
-            <Col md={3}>
-                <Image className='w-100' src={Ig.strMealThumb} />
+        <Row>
+            <Col md={4}>
+                 <Image src={Ig.strMealThumb} className="w-100"/>
             </Col>
-      
+            <Col md={8}>
+                {IgData.map((meals)=> <OthersMeal meals={meals} key={meals.idMeal} />)} 
+            </Col>
+        </Row>
     );
 };
 

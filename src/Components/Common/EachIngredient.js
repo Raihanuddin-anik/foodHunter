@@ -3,7 +3,7 @@ import { Col, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const EachIngredient = ({ item }) => {
-    const key = item.item
+    const key = item.idMeal
     return (
         <Col md={3}>
             <Link to={'/details/' + key}>

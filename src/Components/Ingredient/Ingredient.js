@@ -11,6 +11,7 @@ const Ingredient = () => {
             .then(response => response.json())
             .then(json => setIngredient(json))
     }, [])
+   
     return (
         <Container>
             

@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import EachDetails from '../../Components/EachDetails/EachDetails';
+import OthersMeal from '../../Components/OthersMeal/OthersMeal';
 
 
 const DetailsFood = () => {
@@ -10,13 +11,14 @@ const DetailsFood = () => {
     const [IgData, setIgData] = useState([])
     console.log(IgData)
     useEffect(() => {
-        axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${key}`)
+        axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${key}`)
             .then((response) => {
                 // handle success
                 setIgData(response.data.meals);
             })
 
-    }, [])
+    }, [key])
+
 
     return (
         <Container>
