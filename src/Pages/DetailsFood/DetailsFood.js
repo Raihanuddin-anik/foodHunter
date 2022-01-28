@@ -21,11 +21,13 @@ const DetailsFood = () => {
 
 
     return (
-        <Container>
+        <div style={{backgroundColor:"black"}}>
+        <Container >
             <Row>
                 {IgData.map((Ig) => <EachDetails Ig={Ig} key={Ig.idMeal} />)}
             </Row>
         </Container>
+        </div>
     );
 };
 

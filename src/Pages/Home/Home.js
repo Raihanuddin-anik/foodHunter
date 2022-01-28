@@ -7,6 +7,7 @@ import Header from '../../Components/Header/Header';
 import Meals from '../../Components/Meals/Meals';
 import axios from 'axios';
 import Ingredient from '../../Components/Ingredient/Ingredient';
+import Shefs from '../../Components/Shefs/Shefs';
 
 const Home = () => {
     const [data, setData] = useState([]);
@@ -16,24 +17,26 @@ const Home = () => {
             .then(res => setData(res.data))
     }, [])
 
-   
+
     return (
-        <div style={{ backgroundColor: "black" }}>
-            <Header />
-            <Banner />
-            <Container className="mb-5">
-                <Row>
-                    {
-                        data?.map((meal) => (
-                            <Meals key={meal.idCategory}
-                                meal={meal} />
-                        ))
-                    }
-                </Row>
-            </Container>
-            <Ingredient/>
-
-
+        <div>
+            <div style={{ backgroundColor: "black" }}>
+               
+                <Banner />
+                <Container className="mb-5">
+                    <Row>
+                        {
+                            data?.map((meal) => (
+                                <Meals key={meal.idCategory}
+                                    meal={meal} />
+                            ))
+                        }
+                    </Row>
+                </Container>
+                <Ingredient />
+                <Shefs/>
+            </div>
+            
         </div>
     );
 };
