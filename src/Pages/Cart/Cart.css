@@ -8,6 +8,7 @@
 table {
     border-collapse: collapse;
     border-spacing: 0;
+   
 }
 .dark-bg {
     background: #292929;
@@ -17,9 +18,11 @@ table {
     float: left;
     width: 100%;
     position: relative;
+    
 }
 .cart-totals {
     padding: 75px 60px;
+    align-items: center;
 }
 .total-table th {
     border-bottom: 1px solid rgba(255,255,255,0.1);

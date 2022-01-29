@@ -10,7 +10,7 @@ import { createContext, useState } from 'react';
 import Cart from './Pages/Cart/Cart';
 
 
-export const cartContext = createContext ();
+export  const cartContext = createContext();
 function App() {
 
   const [CartInfo, SetCartInfo] = useState([])

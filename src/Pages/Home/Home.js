@@ -13,7 +13,7 @@ const Home = () => {
     const [data, setData] = useState([]);
     console.log(data)
     useEffect(() => {
-        axios.get('http://localhost:3100/Meals')
+        axios.get('https://floating-springs-68465.herokuapp.com/Meals')
             .then(res => setData(res.data))
     }, [])
 

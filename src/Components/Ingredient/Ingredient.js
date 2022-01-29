@@ -7,7 +7,7 @@ const Ingredient = () => {
     const [Ingredient, setIngredient] = useState([])
     console.log(Ingredient)
     useEffect(() => {
-        fetch('http://localhost:3100/Ingredients')
+        fetch('https://floating-springs-68465.herokuapp.com/Ingredients')
             .then(response => response.json())
             .then(json => setIngredient(json))
     }, [])
