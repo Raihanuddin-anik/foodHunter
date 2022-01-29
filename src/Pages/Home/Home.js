@@ -20,6 +20,7 @@ const Home = () => {
 
     return (
         <div>
+          
             <div style={{ backgroundColor: "black" }}>
                
                 <Banner />

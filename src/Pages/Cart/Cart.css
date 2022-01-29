@@ -1,0 +1,35 @@
+.total-table {
+    width: 100%;
+    float: left;
+    position: relative;
+    z-index: 2;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.dark-bg {
+    background: #292929;
+}
+
+.fl-wrap {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+.cart-totals {
+    padding: 75px 60px;
+}
+.total-table th {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    text-align: left;
+}
+
+.total-table th {
+    padding: 15px 0;
+    color: #fff;
+}
+.total-table td{
+    color: #C19D60;
+}

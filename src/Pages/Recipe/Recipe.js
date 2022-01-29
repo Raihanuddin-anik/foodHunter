@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import RecipeDetails from '../../Components/Common/RecipeDetails';
+import Header from '../../Components/Header/Header';
 
 const Recipe = () => {
     const { id } = useParams()
