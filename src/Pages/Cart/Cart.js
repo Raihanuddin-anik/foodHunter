@@ -2,9 +2,11 @@ import React, { useContext } from 'react';
 import { Container, Table, Row, Col, Image, Button } from 'react-bootstrap';
 import './Cart.css'
 import { cartContext } from '../../App'
+import { Link } from 'react-router-dom';
 const Cart = () => {
     const [CartItem, setCartItem] = useContext(cartContext);
     console.log(CartItem)
+    const total = CartItem.reduce( (total,prd) => total + parseInt(prd.idMeal) , 0);
     const PlaceOrder = () => {
         console.log("Hello")
         fetch('https://floating-springs-68465.herokuapp.com/addOrder', {
@@ -50,20 +52,20 @@ const Cart = () => {
                                 <tbody>
                                     <tr>
                                         <th> Cart Subtotal:</th>
-                                        <td>$240</td>
+                                        <td>${total}</td>
                                     </tr>
                                     <tr>
-                                        <th> Cart Subtotal:</th>
-                                        <td>$240</td>
+                                        <th> Shipping Total:</th>
+                                        <td>$12</td>
                                     </tr>
                                     <tr>
-                                        <th> Cart Subtotal:</th>
-                                        <td>$240</td>
+                                        <th> Total:</th>
+                                        <td>${total + 12}</td>
                                     </tr>
                                 </tbody>
 
                             </Table>
-                            <Button onClick={()=>PlaceOrder()} className="ms-5">Place Order</Button>
+                          <Link to="/success">  <Button onClick={()=>PlaceOrder()} className="ms-5">Place Order</Button></Link>
                         </div>
                     </Col>
                 </Row>

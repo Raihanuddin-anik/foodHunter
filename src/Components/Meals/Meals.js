@@ -5,7 +5,7 @@ const Meals = ({ meal }) => {
     const key = meal.idMeal;
     return (
 
-        <Col md={3}>
+        <Col md={3} xs={6}>
             <Link to={'/details/' + key}>
                 <div style={{ margin: "10px" }}>
                     <Card.Img variant="top" src={meal.strMealThumb} />

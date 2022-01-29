@@ -11,22 +11,26 @@ const Header = () => {
         <div className="Header_component" >
             <Navbar expand="lg">
                 <Container>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
+                  
+
                         <Nav className="me-auto">
                             <Navbar.Brand href="#home">
                             <Image fluid  src={image} />
                             </Navbar.Brand>
                         </Nav>
-                        <Nav className="mr-auto">
+                        <Nav >
+                        <Navbar.Collapse id="basic-navbar-nav">
                             <Nav.Link className="text-dark ps-5">Home</Nav.Link>
                             <Nav.Link className="text-dark ps-5">Api</Nav.Link>
                             <Nav.Link className="text-dark ps-5">Forum</Nav.Link>
+
                             <Nav.Link className="text-dark ps-5"><AiFillFacebook/></Nav.Link>
                             <Nav.Link className="text-dark ps-5"><AiFillTwitterSquare/></Nav.Link>
-                            <Link className="mt-2 ps-5" to="/cart">{CartItem.length} <AiOutlineShoppingCart/></Link> 
+                            </Navbar.Collapse>
+                            <Link className=" p-2" to="/cart">{CartItem.length} <AiOutlineShoppingCart/></Link> 
+                            
                         </Nav>
-                    </Navbar.Collapse>
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 </Container>
             </Navbar>
         </div>

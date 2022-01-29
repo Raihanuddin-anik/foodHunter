@@ -8,6 +8,7 @@ import Recipe from './Pages/Recipe/Recipe';
 import Header from './Components/Header/Header';
 import { createContext, useState } from 'react';
 import Cart from './Pages/Cart/Cart';
+import Shipment from './Pages/Shipment/Shipment';
 
 
 export  const cartContext = createContext();
@@ -25,6 +26,7 @@ function App() {
           <Route path="/details/:key" element={<DetailsFood/>}/>
           <Route path="/recipe/:id" element={<Recipe />}/>
           <Route path="/cart" element={<Cart/>}/>
+          <Route path="/success" element={<Shipment/>}/>
         </Routes>
       </BrowserRouter>
      </cartContext.Provider>
