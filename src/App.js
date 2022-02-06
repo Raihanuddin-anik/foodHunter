@@ -9,6 +9,7 @@ import Header from './Components/Header/Header';
 import { createContext, useState } from 'react';
 import Cart from './Pages/Cart/Cart';
 import Shipment from './Pages/Shipment/Shipment';
+import LogIn from './Pages/LogIn/LogIn';
 
 
 export  const cartContext = createContext();
@@ -27,6 +28,7 @@ function App() {
           <Route path="/recipe/:id" element={<Recipe />}/>
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/success" element={<Shipment/>}/>
+          <Route path="/login" element={<LogIn/>}/>
         </Routes>
       </BrowserRouter>
      </cartContext.Provider>
