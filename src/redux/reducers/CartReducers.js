@@ -5,10 +5,11 @@ const cartReducers = (state = [], action) => {
        case ADD_TO_CART:
        return [...state , action.payload]
        case REMOVE_FROM_CART: {
+          
         const NewState = state.filter(
-            (item) => item._id !== action.payload
+            item => item.idMeal !== action.id
         );
-        return NewState;
+        return NewState ;
     }
      default:
           return state

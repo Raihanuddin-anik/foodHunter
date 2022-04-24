@@ -45,7 +45,7 @@ const Cart = () => {
                                     <td className='w-25'>${data.strMeal}</td>
                                     <td className='w-25'>${data.idMeal}</td>
                                     <td className='w-25'>${data.strArea}</td>
-                                    <td style={{fontSize:"20px"}} onClick={()=>dispatch(RemoveFromCart(cart.idMeal))} ><AiFillDelete/></td>
+                                    <td style={{fontSize:"20px"}} onClick={()=>dispatch(RemoveFromCart(data.idMeal))} ><AiFillDelete/></td>
                                 </tr>
                                 )}
                             </tbody>
