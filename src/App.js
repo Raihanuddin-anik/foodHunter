@@ -10,16 +10,22 @@ import { createContext, useState } from 'react';
 import Cart from './Pages/Cart/Cart';
 import Shipment from './Pages/Shipment/Shipment';
 import LogIn from './Pages/LogIn/LogIn';
+import Profile from './Components/Profile/Profile';
+import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
 
 
 export  const cartContext = createContext();
+export  const InfoContext = createContext();
 function App() {
 
-  const [CartInfo, SetCartInfo] = useState([])
+  const [CartInfo, SetCartInfo] = useState([]);
+  const [LoggedInInfo, setLoggedInInfo] = useState([])
   console.log(CartInfo)
+  console.log(LoggedInInfo.isSignedIn)
  
   return (
     <cartContext.Provider  value={[CartInfo,SetCartInfo]}>
+      <InfoContext.Provider  value={[LoggedInInfo,setLoggedInInfo]}>
       <BrowserRouter>
         <Header/>
         <Routes>
@@ -29,8 +35,13 @@ function App() {
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/success" element={<Shipment/>}/>
           <Route path="/login" element={<LogIn/>}/>
+          <Route path="/profile" element={<PrivateRoute> 
+            <Profile/>
+            </PrivateRoute> }/>
+          
         </Routes>
       </BrowserRouter>
+      </InfoContext.Provider>
      </cartContext.Provider>
   );
 }

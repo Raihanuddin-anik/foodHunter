@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container,Row,Col, Image} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import sideLogo from '../../assest/meal-icon.png';
 import patreon from '../../assest/patreon_logo.png';
 import './Banner.css'
@@ -9,7 +10,7 @@ const Banner = () => {
             <Container style={{paddingTop:"40px"}} >
                 <Row>
                     <Col className="text-white text-center" lg={2}>
-                        <Image   src={sideLogo} />
+                       <Link to='/'> <Image   src={sideLogo} /></Link> 
                     </Col>
                     <Col className="text-white text-center ps-5" lg={8}>
                        <h1 className="text-white">Welcome to RestaBook</h1>

@@ -3,7 +3,7 @@ import { Col, Image, Container, Row, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const OthersMeal = ({ meals, AddToCart }) => {
-   
+    
     const key = meals.idMeal;
     return (
         

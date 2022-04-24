@@ -7,14 +7,16 @@ import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {cartContext} from '../../App'
+import { useDispatch } from 'react-redux';
+import { AddToCart } from '../../redux/actions/CartActions';
 
 const EachDetails = ({ Ig }) => {
     const catagory = Ig.strCategory;
     const id = Ig.idMeal
     const [IgData, setIgData] = useState([]);
     const [cartItem, setCartItem] = useContext(cartContext);
-
-    const notify = () => toast("Wow so easy!");
+  const dispatch =  useDispatch()
+    const notify = () => toast("Added To Card!");
     
     useEffect(() => {
         axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${catagory}`)
@@ -26,12 +28,12 @@ const EachDetails = ({ Ig }) => {
 
     }, [catagory])
 
-    const AddToCart = (meal) =>{
-        let Multiple ;
-        Multiple = [...cartItem, meal];
-        setCartItem(Multiple)
-
-      }
+    // const AddToCart = (meal) =>{
+    //     let Multiple ;
+    //     Multiple = [...cartItem, meal];
+    //     setCartItem(Multiple)
+    //     notify()
+    //   }
    
 
     return (
@@ -55,7 +57,7 @@ const EachDetails = ({ Ig }) => {
                         pauseOnFocusLoss
                         draggable
                         pauseOnHover />
-                    <Button onClick={()=>AddToCart(Ig)}>Add to cart</Button>
+                    <Button onClick={()=>dispatch(AddToCart(Ig))}>Add to cart</Button>
                     <h5 style={{
                         color: "white", marginTop: "20px"
                     }}> Wanna Make Yourself ? <BsEmojiSmile /></h5>

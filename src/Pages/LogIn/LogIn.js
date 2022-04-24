@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
-import firebase from 'firebase/compat/app';
+import React, { useState,useContext } from 'react';
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { useLocation,useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./LogIn.css";
+import { Col, Container, Row } from 'react-bootstrap';
+import { AiFillGooglePlusCircle } from 'react-icons/ai';
+import { InfoContext } from '../../App';
+import { initializeApp } from "firebase/app";
 
 
 const firebaseConfig = {
@@ -16,10 +19,10 @@ const firebaseConfig = {
     appId: "1:1004435149966:web:bc917b112ee033251625df"
 };
 
-if (firebase.apps.length === 0) {
-    firebase.initializeApp(firebaseConfig);
-}
+const app = initializeApp(firebaseConfig);
 
+export const auth = getAuth(app);
+ 
 
 const LogIn = () => {
 
@@ -34,11 +37,13 @@ const LogIn = () => {
         photo: ''
     })
 
-    // const [loggedInUser, setloggedInUser] = useContext(InfoContext);
-    const history = useNavigate();
-    const location = useLocation();
-    let { from } = location.state || { from: { pathname: "/" } };
+    const [loggedInUser, setloggedInUser] = useContext(InfoContext);
 
+    const navigate = useNavigate();
+    const location = useLocation();
+    
+    let  from  = location.state?.from?.pathname ||   '/'  ;
+    navigate(from, { replace: true });
     const provider = new GoogleAuthProvider();
     const handleSignIn = () => {
         signInWithPopup(auth, provider)
@@ -50,9 +55,9 @@ const LogIn = () => {
                     email: email,
                     photo: photoURL,
                 }
-                // setuser(UserSignIn)
-                // setloggedInUser(UserSignIn)
-                history.replace(from)
+                setuser(UserSignIn)
+                setloggedInUser(UserSignIn)
+              
             })
             .catch(err => {
                 console.log(err);
@@ -71,8 +76,8 @@ const LogIn = () => {
                     success: '',
                     photo: ''
                 }
-                // setuser(SignOutUser);
-                // setloggedInUser(SignOutUser)
+                setuser(SignOutUser);
+                setloggedInUser(SignOutUser)
 
 
             })
@@ -131,9 +136,9 @@ const LogIn = () => {
                     NewUserInfo.error = '';
                     NewUserInfo.success = true;
                     setuser(NewUserInfo);
-                    // setloggedInUser(NewUserInfo);
-                    history.replace(from)
-                    console.log(res)
+                    setloggedInUser(NewUserInfo);
+                   
+                   
                 })
                 .catch(function (error) {
                     // Handle Errors here.
@@ -148,55 +153,64 @@ const LogIn = () => {
     }
 
     return (
-        <div className="App">
+        <Container >
 
-            <Button className="w-25 mt-5" onClick={handleSingOut}>Sign Out</Button> :
-            <Button className="w-25 mt-5" onClick={handleSignIn}>Sing In with Google PopUP</Button>
+            <Row className="justify-content-md-center" >
+                <Col md={{ span: 6, offset: 0 }}> <Button variant='danger' className="w-100 mt-5" onClick={handleSingOut}> <AiFillGooglePlusCircle className="fs-5" />Sign Out </Button></Col>
+  <Col md={{ span: 6, offset: 0 }}><Button variant='info' className="w-100 mt-5" onClick={handleSignIn}> <AiFillGooglePlusCircle className="fs-5" />Sing In with Google PopUP </Button></Col>
+            </Row>
+            <Row className="justify-content-md-center" >
+                <Col md={{ span: 6, offset: 0 }}>
 
-            <div className="Login">
-                <input type="checkbox" name="NewUser" onClick={() => setNewUser(!NewUser)} id="" />
-                <br />
-                <label htmlFor="NewUser">New User Sign up</label>
-                <br />
+                    <Row >
 
-                <Form >
+                        <input className="m-auto" type="checkbox" name="NewUser" onClick={() => setNewUser(!NewUser)} id="" />
+                        <br />
+                        <br />
+                        <label className="formItem_label" htmlFor="NewUser">New User Sign up </label>
+                        <br />
+                    </Row>
 
-                    {NewUser && <Form.Group size="lg" controlId="Name">
-                        <Form.Label>Name</Form.Label>
-                        <Form.Control
-                            type="name"
-                            placeholder="Enter Your Name"
+                    <Form >
 
-                        />
-                    </Form.Group>
+                        {NewUser && <Form.Group size="lg" controlId="Name">
+                            <Form.Label>Name</Form.Label>
+                            <Form.Control
+                                type="name"
+                                placeholder="Enter Your Name"
+
+                            />
+                        </Form.Group>
+                        }
+                        <Form.Group size="lg" controlId="email">
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control
+                                name="email"
+                                required
+                                onBlur={handleCheckEmailPassword}
+
+                            />
+                        </Form.Group>
+                        <Form.Group size="lg" controlId="password">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control
+                                name="password"
+                                onBlur={handleCheckEmailPassword}
+                                required
+                            />
+                        </Form.Group>
+                        <Button className="mt-2 w-100" size="lg" onClick={handleSubmit} type="submit" >
+                            Login
+                        </Button>
+                    </Form>
+                    <p style={{ color: 'red' }}>{user.error}</p>
+                    {
+                        user.success && <p style={{ color: 'green' }}> User {NewUser ? "Create" : "logIn"} successfully</p>
                     }
-                    <Form.Group size="lg" controlId="email">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control
-                            name="email"
-                            required
-                            onBlur={handleCheckEmailPassword}
 
-                        />
-                    </Form.Group>
-                    <Form.Group size="lg" controlId="password">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control
-                            name="password"
-                            onBlur={handleCheckEmailPassword}
-                            required
-                        />
-                    </Form.Group>
-                    <Button className="w-100 mt-2" size="lg" onClick={handleSubmit} type="submit" >
-                        Login
-                    </Button>
-                </Form>
-                <p style={{ color: 'red' }}>{user.error}</p>
-                {
-                    user.success && <p style={{ color: 'green' }}> User {NewUser ? "Create" : "logIn"} successfully</p>
-                }
-            </div>
-        </div>
+                </Col>
+            </Row>
+        </Container>
     );
 };
 
