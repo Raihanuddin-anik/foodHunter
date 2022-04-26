@@ -1,4 +1,4 @@
-import React, { useState,useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { useLocation, useNavigate } from 'react-router-dom';
 import Form from "react-bootstrap/Form";
@@ -22,7 +22,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
- 
+
 
 const LogIn = () => {
 
@@ -41,8 +41,8 @@ const LogIn = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    
-    let  from  = location.state?.from?.pathname ||   '/'  ;
+
+    let from = location.state?.from?.pathname || '/';
     navigate(from, { replace: true });
     const provider = new GoogleAuthProvider();
     const handleSignIn = () => {
@@ -57,34 +57,14 @@ const LogIn = () => {
                 }
                 setuser(UserSignIn)
                 setloggedInUser(UserSignIn)
-              
+
             })
             .catch(err => {
                 console.log(err);
                 console.log(err.message);
             })
     }
-    const handleSingOut = () => {
-        signOut(auth)
-            .then(res => {
-                const SignOutUser = {
-                    isSignedIn: false,
-                    name: '',
-                    email: '',
-                    password: '',
-                    error: '',
-                    success: '',
-                    photo: ''
-                }
-                setuser(SignOutUser);
-                setloggedInUser(SignOutUser)
 
-
-            })
-            .catch(err => {
-
-            })
-    }
     const handleCheckEmailPassword = (e) => {
 
         let isFormValid = true;
@@ -137,8 +117,8 @@ const LogIn = () => {
                     NewUserInfo.success = true;
                     setuser(NewUserInfo);
                     setloggedInUser(NewUserInfo);
-                   
-                   
+
+
                 })
                 .catch(function (error) {
                     // Handle Errors here.
@@ -156,8 +136,7 @@ const LogIn = () => {
         <Container >
 
             <Row className="justify-content-md-center" >
-                <Col md={{ span: 6, offset: 0 }}> <Button variant='danger' className="w-100 mt-5" onClick={handleSingOut}> <AiFillGooglePlusCircle className="fs-5" />Sign Out </Button></Col>
-  <Col md={{ span: 6, offset: 0 }}><Button variant='info' className="w-100 mt-5" onClick={handleSignIn}> <AiFillGooglePlusCircle className="fs-5" />Sing In with Google PopUP </Button></Col>
+                <Col md={{ span: 6, offset: 0 }}><Button variant='info' className="w-100 mt-5" onClick={handleSignIn}> <AiFillGooglePlusCircle className="fs-5" />Sing In with Google PopUP </Button></Col>
             </Row>
             <Row className="justify-content-md-center" >
                 <Col md={{ span: 6, offset: 0 }}>

@@ -35,8 +35,8 @@ const Cart = () => {
                                     <th>Item</th>
                                     <th>Description</th>
                                     <th>Price</th>
-                                    <th>Total</th>
-                                    <th>RemoveFromCart</th>
+                                    <th>Origin</th>
+                                    <th>Remove</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -45,7 +45,7 @@ const Cart = () => {
                                     <td className='w-25'>${data.strMeal}</td>
                                     <td className='w-25'>${data.idMeal}</td>
                                     <td className='w-25'>${data.strArea}</td>
-                                    <td style={{fontSize:"20px"}} onClick={()=>dispatch(RemoveFromCart(data.idMeal))} ><AiFillDelete/></td>
+                                    <td style={{fontSize:"20px",cursor:"pointer"}} onClick={()=>dispatch(RemoveFromCart(data.idMeal))} ><AiFillDelete/></td>
                                 </tr>
                                 )}
                             </tbody>

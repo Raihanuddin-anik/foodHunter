@@ -57,7 +57,7 @@ const EachDetails = ({ Ig }) => {
                         pauseOnFocusLoss
                         draggable
                         pauseOnHover />
-                    <Button onClick={()=>dispatch(AddToCart(Ig))}>Add to cart</Button>
+                    <Button onClick={()=>dispatch(AddToCart(Ig),notify())}>Add to cart</Button>
                     <h5 style={{
                         color: "white", marginTop: "20px"
                     }}> Wanna Make Yourself ? <BsEmojiSmile /></h5>
