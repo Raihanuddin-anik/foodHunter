@@ -8,9 +8,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RemoveFromCart } from '../../redux/actions/CartActions';
 const Cart = () => {
     const cart = useSelector((state) => state.cartReducers);
+    console.log(cart)
     const dispatch = useDispatch()
-    
-    const total = cart.reduce( (total,prd) => total + parseInt(prd.idMeal) , 0);
+    const total = cart.reduce( (total,prd) => total + parseInt(prd.id) , 0);
     const PlaceOrder = () => {
         console.log("Hello")
         fetch('https://floating-springs-68465.herokuapp.com/addOrder', {
@@ -41,11 +41,12 @@ const Cart = () => {
                             </thead>
                             <tbody>
                                 {cart.map((data) => <tr>
-                                    <td className='w-25'><Image src={data.strMealThumb} className="img-fluid w-25" /></td>
-                                    <td className='w-25'>${data.strMeal}</td>
-                                    <td className='w-25'>${data.idMeal}</td>
-                                    <td className='w-25'>${data.strArea}</td>
-                                    <td style={{fontSize:"20px",cursor:"pointer"}} onClick={()=>dispatch(RemoveFromCart(data.idMeal))} ><AiFillDelete/></td>
+                                    
+                                    <td className='w-25'><Image src={data.ImgUrl} className="img-fluid w-25" /></td>
+                                    <td className='w-25'>${data.Name}</td>
+                                    <td className='w-25'>${data.id}</td>
+                                    <td className='w-25'>${data.Area}</td>
+                                    <td style={{fontSize:"20px",cursor:"pointer"}} onClick={()=>dispatch(RemoveFromCart(data.newId))} ><AiFillDelete/></td>
                                 </tr>
                                 )}
                             </tbody>
@@ -70,7 +71,7 @@ const Cart = () => {
                                 </tbody>
 
                             </Table>
-                          <Link to="/success">  <Button onClick={()=>PlaceOrder()} className="ms-5">Place Order</Button></Link>
+                          <Link to="/Shipment">  <Button onClick={()=>PlaceOrder()} className="ms-5">Place Order</Button></Link>
                         </div>
                     </Col>
                 </Row>

@@ -5,11 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RemoveFromCart } from '../../redux/actions/CartActions';
 import './Shipment.css'
 const Shipment = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
     const cart = useSelector((state) => state.cartReducers);
     const dispatch = useDispatch()
-    const total = cart.reduce( (total,prd) => total + parseInt(prd.idMeal) , 0);
+    const total = cart.reduce( (total,prd) => total + parseInt(prd.id) , 0);
     return (
         <Container>
             <Row>
@@ -40,14 +40,14 @@ const Shipment = () => {
 
                                     {cart.map((data) => <div style={{ backgroundColor: "rgb(245, 241, 241)", borderRadius: "10px" }} className="d-flex mt-2 p-2">
                                         <div className="d-flex">
-                                            <img className='w-25 Meal_thumb' src={data.strMealThumb} />
+                                            <img className='w-25 Meal_thumb' src={data.ImgUrl} />
                                             <div className="p-2 ms-2">
-                                                <small>{data.strMeal}</small>
+                                                <small>{data.Name}</small>
                                                 <br />
-                                                <b>{data.idMeal}$</b>
+                                                <b>{data.id}$</b>
 
                                             </div>
-                                            <Button style={{ width: "40%", height: "40px" }} onClick={() => dispatch(RemoveFromCart(data.idMeal))}>Remove</Button>
+                                            <Button style={{ width: "40%", height: "40px" }} onClick={() => dispatch(RemoveFromCart(data.newId))}>Remove</Button>
                                         </div>
 
                                         <small style={{ marginTop: "44px", marginRight: "8px" }}>  </small>

@@ -32,10 +32,9 @@ const Header = () => {
                     </Navbar.Brand>
                     <Link className="text-dark  Nav_Item_cart_small  pe-2" to="/cart">{cart.length} <AiOutlineShoppingCart /></Link>
 
-                    <Navbar.Toggle aria-controls="navbarScroll" />
-                    <Navbar.Collapse id="navbarScroll">
-                        <Nav.Link>  </Nav.Link>
-                        <Nav className="ms-auto my-2 my-lg-0"
+                   
+                      
+                        <Nav className="ms-auto my-2"
                             style={{ maxHeight: '100px' }}
                             navbarScroll>
 
@@ -52,7 +51,7 @@ const Header = () => {
                             </div> : <Link to ="/profile"><span style={{marginRight:"3px",color:"black"}}>LOGIN</span><CgProfile /></Link> }</Nav.Link>
                             <Nav.Link className="Nav_Cart">   <Link className="text-dark  Nav_Item_cart_larg  pe-2" to="/cart">{cart.length} <AiOutlineShoppingCart /></Link></Nav.Link>
                         </Nav>
-                    </Navbar.Collapse>
+
 
                 </Container>
             </Navbar>
