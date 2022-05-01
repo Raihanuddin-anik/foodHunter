@@ -37,9 +37,7 @@ function App() {
             <Shipment/>
             </PrivateRoute> }/>
           <Route path="/login" element={<LogIn/>}/>
-          <Route path="/profile" element={<PrivateRoute> 
-            <Profile/>
-            </PrivateRoute> }/>
+         
           
         </Routes>
       </BrowserRouter>

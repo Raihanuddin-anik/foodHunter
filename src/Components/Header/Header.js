@@ -9,11 +9,14 @@ import { useSelector } from 'react-redux';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../Pages/LogIn/LogIn';
 import {  signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 const Header = () => {
+    let navigate = useNavigate();
     const handleSingOut = () => {
         signOut(auth)
             .then(res => {
                console.log(res)
+               navigate('/')
                 }
              )
             .catch(err => {
@@ -34,9 +37,7 @@ const Header = () => {
 
                    
                       
-                        <Nav className="ms-auto my-2"
-                            style={{ maxHeight: '100px' }}
-                            navbarScroll>
+                        <Nav className="ms-auto my-2">
 
                             <Nav.Link className="Nav_Home"> <Link to="/" className="text-dark Nav_Item">Home</Link></Nav.Link>
                             <Nav.Link className="Nav_Profile"> {user ? 
@@ -45,10 +46,10 @@ const Header = () => {
                                 <button class="dropbtn">{user?.displayName}</button>
                                 <div class="dropdown-content">
                                     <a href="#">Orders and Recording</a>
-                                    <Link to="/profile">Profile</Link>
+                                    <Link to="/login">Profile</Link>
                                     <a onClick={()=>handleSingOut()}>Log Out</a>
                                 </div> 
-                            </div> : <Link to ="/profile"><span style={{marginRight:"3px",color:"black"}}>LOGIN</span><CgProfile /></Link> }</Nav.Link>
+                            </div> : <Link  className="login_Text" to ="/login"><span style={{paddingTop:"3px",color:"black"}}>LOGIN</span><CgProfile /></Link> }</Nav.Link>
                             <Nav.Link className="Nav_Cart">   <Link className="text-dark  Nav_Item_cart_larg  pe-2" to="/cart">{cart.length} <AiOutlineShoppingCart /></Link></Nav.Link>
                         </Nav>
 

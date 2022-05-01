@@ -138,7 +138,7 @@ const LogIn = () => {
             <Row className="justify-content-md-center" >
                 <Col md={{ span: 6, offset: 0 }}><Button variant='info' className="w-100 mt-5" onClick={handleSignIn}> <AiFillGooglePlusCircle className="fs-5" />Sing In with Google PopUP </Button></Col>
             </Row>
-            <Row className="justify-content-md-center" >
+            {/* <Row className="justify-content-md-center" >
                 <Col md={{ span: 6, offset: 0 }}>
 
                     <Row >
@@ -188,7 +188,7 @@ const LogIn = () => {
                     }
 
                 </Col>
-            </Row>
+            </Row> */}
         </Container>
     );
 };
