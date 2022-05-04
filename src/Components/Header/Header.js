@@ -50,7 +50,7 @@ const Header = () => {
                                     <a onClick={()=>handleSingOut()}>Log Out</a>
                                 </div> 
                             </div> : <Link  className="login_Text" to ="/login"><span style={{paddingTop:"3px",color:"black"}}>LOGIN</span><CgProfile /></Link> }</Nav.Link>
-                            <Nav.Link className="Nav_Cart">   <Link className="text-dark  Nav_Item_cart_larg  pe-2" to="/cart">{cart.length} <AiOutlineShoppingCart /></Link></Nav.Link>
+                            <Nav.Link className="Nav_Cart">   <Link className="text-dark  Nav_Item_cart_larg  pe-2" to="/foodCart">{cart.length} <AiOutlineShoppingCart /></Link></Nav.Link>
                         </Nav>
 
 

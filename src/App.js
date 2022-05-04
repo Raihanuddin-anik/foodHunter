@@ -7,7 +7,7 @@ import DetailsFood from './Pages/DetailsFood/DetailsFood';
 import Recipe from './Pages/Recipe/Recipe';
 import Header from './Components/Header/Header';
 import { createContext, useState } from 'react';
-import Cart from './Pages/Cart/Cart';
+import FoodCart from './Pages/FoodCart/FoodCart';
 import Shipment from './Pages/Shipment/Shipment';
 import LogIn from './Pages/LogIn/LogIn';
 import Profile from './Components/Profile/Profile';
@@ -32,7 +32,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/details/:key" element={<DetailsFood/>}/>
           <Route path="/recipe/:id" element={<Recipe />}/>
-          <Route path="/cart" element={<Cart/>}/>
+          <Route path="/foodCart" element={<FoodCart/>}/>
           <Route path="/shipment" element={<PrivateRoute> 
             <Shipment/>
             </PrivateRoute> }/>
