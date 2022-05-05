@@ -8,6 +8,7 @@ import { auth } from '../LogIn/LogIn';
 function PrivateRoute({ children }) {
 
   const [user] = useAuthState(auth);
+  console.log(user)
   let location = useLocation();
 
   if (!user) {

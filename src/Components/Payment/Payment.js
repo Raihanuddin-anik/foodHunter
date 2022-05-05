@@ -2,12 +2,12 @@ import react, { useState } from 'react';
 import { CardElement,useElements,useStripe } from '@stripe/react-stripe-js';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faMoneyBillAlt } from '@fortawesome/free-solid-svg-icons';
-
+import {FaCreditCard} from 'react-icons/fa'
+import { Button } from 'react-bootstrap';
 
 
 const Payment = ({setPayment}) => {
   const [showError, setShowError] = useState("");
-  console.log(showError)
   const stripe = useStripe();
   const elements = useElements();
 
@@ -37,16 +37,18 @@ const Payment = ({setPayment}) => {
       setShowError(error)
       setPayment(false)
     } else {
+      setPayment(true)
       console.log('[PaymentMethod]', paymentMethod);
       setShowError("")
-      setPayment(true)
+     
     }
   };
 
   return (
     <form onSubmit={handleSubmit} >
-  <h4 className="p-5">Pay By Your Any Card</h4>
+  
   {/* <FontAwesomeIcon className="fs-3 m-3" icon={faMoneyBillAlt} /> */}
+  
         <CardElement
           options={{
             style: {
@@ -63,11 +65,11 @@ const Payment = ({setPayment}) => {
             },
           }}
         />
-        <br/>
-        <p style={{color:"red"}}>{showError.message ? showError.message + "try with 4242424242424242": '' }</p>
-        <button className="btn m-5" type="submit" disabled={!stripe}>
+
+        <p style={{color:"red"}}>{showError.message ? showError.message: '' }</p>
+        <Button className="btn mt-2 w-50" type="submit" disabled={!stripe}>
           Pay
-      </button>
+      </Button>
       
     </form>
   );

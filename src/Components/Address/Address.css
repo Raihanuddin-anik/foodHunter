@@ -12,8 +12,41 @@
 .user_input input{
     border: none;
 }
+.Address_Input{
+    border: none;
+    width: 350px;
+}
+.div_section{
+    margin-left: 25px;
+}
+@media only screen and (max-width: 998px) {
+    .Address_Input{
+        width: 200px;
+    }
+}
+@media only screen and (max-width: 450px) {
+    .Address_Input{
+        width: 150px;
+    }
+    .Off_White{
+        font-size: 15px;
+    }
+    .provide_Info{
+        font-size: 10px;
+    }
+    .div_section{
+        margin-left: 2px;
+    }
+    .submit_btn{
+        width: 50px;
+        font-size: 10px;
+    }
+    
+    
+}
 .Off_White{
     color: rgb(175, 177, 179);
+    margin-top: 2px;
 }
 .icon_color{
     color: green;
@@ -24,4 +57,35 @@
     padding: 10px;
     border-radius: 8px;
 
+}
+.Card_Info{
+    padding: 10px;
+    border-radius: 8px;
+}
+.card_Icon{
+    font-size:25px;
+    border:1px solid rgb(61, 58, 58);
+    padding: 0px 10px 4px 10px;
+    border-radius: 10px;
+    margin-top: -10px;
+    
+}
+.list_C{
+  
+        background-color: black;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+}
+.Make_payment{
+    width: 25rem;
+}
+@media only screen and (max-width: 450px) {
+    .Address_Input{
+        width: 150px;
+    }
+    .Make_payment{
+        width: 15rem;
+    }
+    
 }

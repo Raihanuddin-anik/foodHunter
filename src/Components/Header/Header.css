@@ -1,6 +1,8 @@
 .Nav_Item_cart_small{
   display: none;
+  
 }
+
 @media only screen and (max-width: 991px) {
 
   .Nav_Item_cart_larg {

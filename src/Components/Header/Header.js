@@ -39,18 +39,18 @@ const Header = () => {
                       
                         <Nav className="ms-auto my-2">
 
-                            <Nav.Link className="Nav_Home"> <Link to="/" className="text-dark Nav_Item">Home</Link></Nav.Link>
+                            <Nav.Link className="Nav_Home"> <Link to="/" style={{textDecoration:"none"}} className="text-dark Nav_Item">Home</Link></Nav.Link>
                             <Nav.Link className="Nav_Profile"> {user ? 
                             <div class="dropdown">
                                 <Image className="Profile_Img" src={user.photoURL} />
-                                <button class="dropbtn">{user?.displayName}</button>
+                                <button  style={{textDecoration:"none"}} class="dropbtn">{user?.displayName}</button>
                                 <div class="dropdown-content">
                                     <a href="#">Orders and Recording</a>
                                     <Link to="/login">Profile</Link>
                                     <a onClick={()=>handleSingOut()}>Log Out</a>
                                 </div> 
                             </div> : <Link  className="login_Text" to ="/login"><span style={{paddingTop:"3px",color:"black"}}>LOGIN</span><CgProfile /></Link> }</Nav.Link>
-                            <Nav.Link className="Nav_Cart">   <Link className="text-dark  Nav_Item_cart_larg  pe-2" to="/foodCart">{cart.length} <AiOutlineShoppingCart /></Link></Nav.Link>
+                            <Nav.Link className="Nav_Cart">   <Link className="text-dark  Nav_Item_cart_larg pe-2"  style={{textDecoration:"none"}} to="/foodCart">{cart.length} <AiOutlineShoppingCart /></Link></Nav.Link>
                         </Nav>
 
 

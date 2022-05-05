@@ -32,9 +32,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/details/:key" element={<DetailsFood/>}/>
           <Route path="/recipe/:id" element={<Recipe />}/>
-          <Route path="/foodCart" element={<FoodCart/>}/>
-          <Route path="/shipment" element={<PrivateRoute> 
-            <Shipment/>
+          <Route path="/foodCart" element={<PrivateRoute> 
+            <FoodCart/>
             </PrivateRoute> }/>
           <Route path="/login" element={<LogIn/>}/>
          

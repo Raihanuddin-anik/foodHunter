@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Table, Row, Col, Image, Button } from 'react-bootstrap';
 import { AiFillDelete } from 'react-icons/ai'
 import './FoodCart.css'
@@ -10,7 +10,8 @@ import CartInfo from '../../Components/CartInfo/CartInfo';
 import Address from '../../Components/Address/Address';
 const Cart = () => {
     const cart = useSelector((state) => state.cartReducers);
-
+    const [payment, setPayment] = useState(false);
+    console.log(payment)
     const PlaceOrder = () => {
         console.log("Hello")
         fetch('https://floating-springs-68465.herokuapp.com/addOrder', {
@@ -24,19 +25,19 @@ const Cart = () => {
             .then((json) => console.log("sr", json));
     }
     return (
-        <div style={{ height: "300vh" }}>
+      
             <Container className="py-5">
                 <h2>Food Cart</h2>
                 <Row>
                     <Col md={8}>
-                       <Address/>
+                       <Address setPayment={setPayment}/>
                     </Col>
                     <Col md={4}>
-                        <CartInfo></CartInfo>
+                        <CartInfo payment={payment}></CartInfo>
                     </Col>
                 </Row>
             </Container>
-        </div>
+       
     );
 };
 

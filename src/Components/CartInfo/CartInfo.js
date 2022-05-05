@@ -3,8 +3,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RemoveFromCart } from '../../redux/actions/CartActions';
 
-const CartInfo = () => {
-
+const CartInfo = ({payment}) => {
+console.log("show", payment)
     const cart = useSelector((state) => state.cartReducers);
     const dispatch = useDispatch()
     const total = cart.reduce((total, prd) => total + parseInt(prd.id), 0);
@@ -69,7 +69,7 @@ const CartInfo = () => {
                         </div>
                     </div>
                 </div>
-                <Button className="w-100">Place</Button>
+               <Button disabled={!payment} variant="success"  className="w-100">Place</Button>
             </div>
 
         </div>
