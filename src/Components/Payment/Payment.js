@@ -8,6 +8,7 @@ import { Button } from 'react-bootstrap';
 
 const Payment = ({setPayment}) => {
   const [showError, setShowError] = useState("");
+  const [ShowSuccess, setShowSuccess] = useState(false)
   const stripe = useStripe();
   const elements = useElements();
 
@@ -38,6 +39,7 @@ const Payment = ({setPayment}) => {
       setPayment(false)
     } else {
       setPayment(true)
+      setShowSuccess(true)
       console.log('[PaymentMethod]', paymentMethod);
       setShowError("")
      
@@ -65,7 +67,7 @@ const Payment = ({setPayment}) => {
             },
           }}
         />
-
+   <p style={{color:"green"}}>{ShowSuccess ? 'Payment Success': '' }</p>
         <p style={{color:"red"}}>{showError.message ? showError.message: '' }</p>
         <Button className="btn mt-2 w-50" type="submit" disabled={!stripe}>
           Pay

@@ -4,7 +4,7 @@ import { Container, Row, Col, Image, Table } from 'react-bootstrap';
 const RecipeDetails = ({ data }) => {
     console.log(data)
     return (
-        <Container>
+        <Container className="mt-2">
             <Row>
                 <Col md={6}>
                     <Image src={data.strMealThumb} className='w-100' />
