@@ -11,12 +11,19 @@ import Address from '../../Components/Address/Address';
 const Cart = () => {
     const cart = useSelector((state) => state.cartReducers);
     const [payment, setPayment] = useState(false);
-    console.log(payment)
+    const [AllInfo, setAllInfo] = useState({
+        name: '',
+        number: '',
+        Address: ''
+        
+    })
+    const DeliveryInfo = { cart, AllInfo };
+   
     const PlaceOrder = () => {
         console.log("Hello")
         fetch('https://floating-springs-68465.herokuapp.com/addOrder', {
             method: 'POST',
-            body: JSON.stringify(cart),
+            body: JSON.stringify(DeliveryInfo),
             headers: {
                 'Content-type': 'application/json',
             },
@@ -30,10 +37,10 @@ const Cart = () => {
                 <h2>Food Cart</h2>
                 <Row>
                     <Col md={8}>
-                       <Address setPayment={setPayment}/>
+                       <Address setAllInfo={setAllInfo} setPayment={setPayment}/>
                     </Col>
                     <Col md={4}>
-                        <CartInfo payment={payment}></CartInfo>
+                        <CartInfo PlaceOrder={PlaceOrder} payment={payment}></CartInfo>
                     </Col>
                 </Row>
             </Container>

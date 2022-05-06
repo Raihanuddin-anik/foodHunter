@@ -12,7 +12,7 @@ const Banner = () => {
                     <Col className="text-white text-center" lg={2}>
                        <Link to='/'> <Image   src={sideLogo} /></Link> 
                     </Col>
-                    <Col className="text-white text-center ps-5" lg={8}>
+                    <Col className="text-white text-center ps-3" lg={8}>
                        <h1 className="text-white">Welcome to RestaBook</h1>
                      <p> Welcome to RestaBook: An open, crowd-sourced database of Recipes from around the world.
                  We also offer a free JSON API for anyone wanting to use it.<br/>

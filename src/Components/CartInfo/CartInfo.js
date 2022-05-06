@@ -2,8 +2,9 @@ import { Button } from 'react-bootstrap';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RemoveFromCart } from '../../redux/actions/CartActions';
+import { Link } from 'react-router-dom';
 
-const CartInfo = ({payment}) => {
+const CartInfo = ({payment,PlaceOrder}) => {
 console.log("show", payment)
     const cart = useSelector((state) => state.cartReducers);
     const dispatch = useDispatch()
@@ -69,7 +70,7 @@ console.log("show", payment)
                         </div>
                     </div>
                 </div>
-               <Button disabled={!payment} variant="success"  className="w-100">Place</Button>
+               <Button onClick={()=>PlaceOrder()} disabled={!payment} variant="success"  className="w-100"><Link to="/success">Place</Link></Button>
             </div>
 
         </div>

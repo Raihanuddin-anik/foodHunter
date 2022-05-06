@@ -12,6 +12,7 @@ import Shipment from './Pages/Shipment/Shipment';
 import LogIn from './Pages/LogIn/LogIn';
 import Profile from './Components/Profile/Profile';
 import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
+import Success from './Pages/Success/Success';
 
 
 export  const cartContext = createContext();
@@ -30,14 +31,16 @@ function App() {
         <Header/>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/success" element={ <Success/>}/>
           <Route path="/details/:key" element={<DetailsFood/>}/>
           <Route path="/recipe/:id" element={<Recipe />}/>
           <Route path="/foodCart" element={<PrivateRoute> 
             <FoodCart/>
             </PrivateRoute> }/>
+            <Route path="/profile" element={<PrivateRoute> 
+            <Profile/>
+            </PrivateRoute> }/>
           <Route path="/login" element={<LogIn/>}/>
-         
-          
         </Routes>
       </BrowserRouter>
       </InfoContext.Provider>

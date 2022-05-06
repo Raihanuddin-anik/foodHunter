@@ -9,7 +9,7 @@ import './Address.css'
 import { auth } from '../../Pages/LogIn/LogIn';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
-const Address = ({ setPayment }) => {
+const Address = ({ setPayment ,setAllInfo}) => {
     const [disabled, setDisabled] = useState('disabled');
     const [disabledAddress, setdisabledAddress] = useState('disabled')
 
@@ -42,6 +42,7 @@ const Address = ({ setPayment }) => {
         const NewUserInfo = { ...user };
         NewUserInfo[e.target.name] = e.target.value;
         setuser(NewUserInfo);
+        setAllInfo(NewUserInfo);
     }
 
 
@@ -56,7 +57,7 @@ const Address = ({ setPayment }) => {
 
                     <div className='div_section'>
                         <div className='d-flex '>
-                            <h6 className='Off_White'>{user.name && user.number ? <span style={{ color: "green" }}>LogIn</span>:<span style={{ color: "black" }}>LogIn</span> }</h6>
+                            <h6 className='Off_White'>{user.name && user.number ? <span style={{ color: "green" }}>LOGIN</span>:<span style={{ color: "black" }}>LOGIN</span> }</h6>
                             <h6 className='ms-2 '>{user.name && user.number ? <span style={{ color: "green" }}>< BsCheckLg /></span> : <span style={{ color: "red" }}><ImCross /><small className='provide_Info'>provide your Name and Number</small></span>}</h6>
                         </div>
                         <div className='user_input'>

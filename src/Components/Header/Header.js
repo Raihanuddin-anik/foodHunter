@@ -45,8 +45,8 @@ const Header = () => {
                                 <Image className="Profile_Img" src={user.photoURL} />
                                 <button  style={{textDecoration:"none"}} class="dropbtn">{user?.displayName}</button>
                                 <div class="dropdown-content">
-                                    <a href="#">Orders and Recording</a>
-                                    <Link to="/login">Profile</Link>
+                                    <Link to="/foodCart">Orders and Recording</Link>
+                                    <Link to="/profile">Profile</Link>
                                     <a onClick={()=>handleSingOut()}>Log Out</a>
                                 </div> 
                             </div> : <Link  className="login_Text" to ="/login"><span style={{paddingTop:"3px",color:"black"}}>LOGIN</span><CgProfile /></Link> }</Nav.Link>
