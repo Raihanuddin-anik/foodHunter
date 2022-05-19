@@ -10,7 +10,7 @@ const Ingredient = () => {
         fetch('https://floating-springs-68465.herokuapp.com/Ingredients')
             .then(response => response.json())
             .then(json => setIngredient(json))
-    }, [])
+    }, [ ])
    
     return (
         <Container>

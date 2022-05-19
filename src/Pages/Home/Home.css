@@ -1,0 +1,28 @@
+.more_btn {
+    text-align: center;
+}
+
+.btn1 {
+    border-radius: 30px;
+    background-color: #dd5903;
+    color: #fff;
+    border: none;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.btn2 {
+    border-radius: 30px;
+    background-color: #dd5903;
+    color: #fff;
+    border: none;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+}
+.arrowBtn{
+    border: none;
+    background: white;
+    font-size: 26px;
+}

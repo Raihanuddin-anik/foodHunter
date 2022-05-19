@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { CardImg, Container, Image, Nav, Navbar } from 'react-bootstrap';
-import image from '../../assest/logo.png';
+import image from '../../assest/p-logo.png';
 import { AiFillFacebook, AiFillTwitterSquare, AiOutlineShoppingCart } from "react-icons/ai";
 import { CgProfile } from 'react-icons/cg'
 import { Link } from 'react-router-dom';
@@ -31,12 +31,10 @@ const Header = () => {
                 <Container>
 
                     <Navbar.Brand href="#home">
-                        <Link to="/"> <Image fluid src={image} /></Link>
+                        <Link to="/"> <Image className='w-25' fluid src={image} /></Link>
                     </Navbar.Brand>
                     <Link className="text-dark  Nav_Item_cart_small  pe-2" to="/cart">{cart.length} <AiOutlineShoppingCart /></Link>
 
-                   
-                      
                         <Nav className="ms-auto my-2">
 
                             <Nav.Link className="Nav_Home"> <Link to="/" style={{textDecoration:"none"}} className="text-dark Nav_Item">Home</Link></Nav.Link>
@@ -47,7 +45,7 @@ const Header = () => {
                                 <div class="dropdown-content">
                                     <Link to="/foodCart">Orders and Recording</Link>
                                     <Link to="/profile">Profile</Link>
-                                    <a onClick={()=>handleSingOut()}>Log Out</a>
+                                    <a  onClick={()=>handleSingOut()}>Log Out</a>
                                 </div> 
                             </div> : <Link  className="login_Text" to ="/login"><span style={{paddingTop:"3px",color:"black"}}>LOGIN</span><CgProfile /></Link> }</Nav.Link>
                             <Nav.Link className="Nav_Cart">   <Link className="text-dark  Nav_Item_cart_larg pe-2"  style={{textDecoration:"none"}} to="/foodCart">{cart.length} <AiOutlineShoppingCart /></Link></Nav.Link>

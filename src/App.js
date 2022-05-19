@@ -28,7 +28,7 @@ function App() {
     <cartContext.Provider  value={[CartInfo,SetCartInfo]}>
       <InfoContext.Provider  value={[LoggedInInfo,setLoggedInInfo]}>
       <BrowserRouter>
-        <Header/>
+       
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/success" element={ <Success/>}/>
