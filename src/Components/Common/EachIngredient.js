@@ -5,11 +5,14 @@ import { Link } from 'react-router-dom';
 const EachIngredient = ({ item }) => {
     const key = item.idMeal
     return (
-        <Col md={3} xs={6}>
+        <Col>
+           
+          
             <Link to={'/details/' + key}>
-                <Image className="w-100" src={item.Img} />
-                <p style={{ color: "white", textAlign: "center" }}>{item.item}</p>
+                <Image className="w-75" src={item.Img} />
+                <p style={{ textAlign: "center" }}>{item.item}</p>
             </Link>
+       
         </Col>
     );
 };

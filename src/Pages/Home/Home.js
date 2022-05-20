@@ -11,12 +11,13 @@ import Ingredient from '../../Components/Ingredient/Ingredient';
 import Shefs from '../../Components/Shefs/Shefs';
 import Shef from '../../RandomMeals';
 import './Home.css'
+import Footer from '../../Components/Footer/Footer';
 
 const Home = () => {
     const [data, setData] = useState([]);
     const [slicedData, setSlicedData] = useState([]);
     const [startNumber, setStartNumner] = useState(0);
-    const [lastNumber, setLastNumber] = useState(8)
+    const [lastNumber, setLastNumber] = useState(6)
     useEffect(() => {
         axios.get('https://floating-springs-68465.herokuapp.com/Meals')
             .then(res => setData((res.data)))
@@ -32,7 +33,12 @@ const Home = () => {
         <div >
             <Banner />
             <Container className="mb-5 mt-5">
-                <h4>Showing {slicedData.length} out of {data.length}</h4>
+                <h4 >SHOWING {slicedData.length} OUT OF {data.length}</h4>
+                <div className='more_btn' >
+                    <button onClick={() => setLastNumber(lastNumber - 1)} className="arrowBtn">< IoIosArrowBack /></button>
+                    <button className="btn2">{slicedData.length}</button>
+                    <button onClick={() => setLastNumber(lastNumber + 1)} className="arrowBtn">< IoIosArrowForward /></button>
+                </div>
                 <Row>
                     {
                         slicedData?.map((meal) => (
@@ -41,14 +47,12 @@ const Home = () => {
                         ))
                     }
                 </Row>
-                <div className='more_btn' >
-                    <button onClick={() => setLastNumber(lastNumber - 1)} className="arrowBtn">< IoIosArrowBack /></button>
-                    <button className="btn2">{slicedData.length}</button>
-                    <button onClick={() => setLastNumber(lastNumber + 1)} className="arrowBtn">< IoIosArrowForward /></button>
-                </div>
+                <Ingredient />
+                <Shefs />
+                
             </Container>
-            <Ingredient />
-            <Shefs />
+            <Footer/>
+
         </div>
 
 
