@@ -8,10 +8,10 @@ const Meals = ({ meal }) => {
 
         <Col md={3} xs={6}>
            
-            <Link to={'/details/' + key}>
+            <Link style={{textDecoration:"none"}} to={'/details/' + key}>
                 <div style={{ margin: "10px" }}>
                     <Card.Img variant="top" src={meal.strMealThumb} />
-                    <p style={{ textAlign: "center" }}>{meal.strMeal}</p>
+                    <p style={{ textAlign: "center",fontSize:'20px',color:"black" }}>{meal.strMeal}</p>
                 </div>
             </Link>
         </Col >

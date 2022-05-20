@@ -47,11 +47,10 @@ const Home = () => {
                         ))
                     }
                 </Row>
+                </Container>
                 <Ingredient />
-                <Shefs />
-                
-            </Container>
-            <Footer/>
+            <Shefs />
+            <Footer />
 
         </div>
 

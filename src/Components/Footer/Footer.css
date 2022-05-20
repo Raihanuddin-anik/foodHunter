@@ -47,7 +47,7 @@ table{
     background: black;
     outline: none;
     color: white;
-    width: 250px;
+    max-width: 250px;
 }
 .security_div{
     display: flex;

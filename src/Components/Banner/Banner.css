@@ -29,24 +29,26 @@
   }
   nav ul{
     float: right;
-    margin-right: 20px;
+    margin-right: 30px;
   }
   nav ul li{
     display: inline-block;
     line-height: 80px;
     margin: 0 5px;
   }
-  nav ul li a{
-    color: white;
+  .nav_item{
+    text-decoration: none;
+    color: aliceblue;
+  }
+  nav ul li {
+    font-weight: bold;
     font-size: 17px;
     padding: 7px 13px;
     border-radius: 3px;
     text-transform: uppercase;
   }
-  a.active,a:hover{
-    background: #1b9bff;
-    transition: .5s;
-  }
+
+  
   .checkbtn{
     font-size: 30px;
     color: white;
@@ -90,10 +92,7 @@
     nav ul li a{
       font-size: 20px;
     }
-    a:hover,a.active{
-      background: none;
-      color: #0082e6;
-    }
+   
     #check:checked ~ ul{
       left: 0;
     }

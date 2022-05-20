@@ -8,9 +8,9 @@ const EachIngredient = ({ item }) => {
         <Col>
            
           
-            <Link to={'/details/' + key}>
+            <Link style={{textDecoration:"none"}} to={'/details/' + key}>
                 <Image className="w-75" src={item.Img} />
-                <p style={{ textAlign: "center" }}>{item.item}</p>
+                <p style={{ textAlign: "center",fontSize:"17px",color:"gray", }}>{item.item}</p>
             </Link>
        
         </Col>

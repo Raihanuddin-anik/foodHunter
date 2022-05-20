@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import EachShef from '../Common/EachShef';
+
 
 const Shefs = () => {
     const [shefs, setShefs] = useState([]);
@@ -15,8 +15,8 @@ const Shefs = () => {
     return (
         <Container>
             <div style={{ textAlign: "center", paddingTop: "20px" }}>
-                <h5 className="text-white">Our Awesome Team</h5>
-                <h2 className="text-white">Met Our Shef</h2>
+                <h5>Our Awesome Team</h5>
+                <h2 >Met Our Shef</h2>
             </div>
             <Row>
                 {shefs.map((person) => (
