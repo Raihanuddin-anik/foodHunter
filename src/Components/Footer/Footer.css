@@ -2,7 +2,27 @@
     background-color:black ;
     color: aliceblue;
    
- 
+}
+p:hover{
+    color: brown;
+}
+h6:hover{
+    color: brown;
+}
+h5:hover{
+    color: brown;
+}
+h3:hover{
+    color: brown;
+}
+td:hover{
+    color: brown;
+}
+th:hover{
+    color: brown;
+}
+span:hover{
+    color: brown;
 }
 table tr{
    display: flex;
@@ -29,9 +49,19 @@ table{
     color: white;
     width: 250px;
 }
-@media only screen and (max-width: 600px) {
-    .footer_S {
-      width: 100%;
-      text-align: center;
+.security_div{
+    display: flex;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width: 766px) {
+    .security_div{
+        display: block;
+    }
+    .Copyright_p{
+        text-align: center;
+    }
+    .privacy_p{
+        text-align: center;
     }
   }

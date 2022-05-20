@@ -18,7 +18,7 @@ const Footer = () => {
                     <Col md={3} style={{ marginTop: "60px" }}>
                         <h3>FoodX</h3>
                         <p className='web_Info'>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
-                        <p style={{ fontSize: '30px' }}><FaFacebookF /> &nbsp;<AiOutlineTwitter /> &nbsp;<AiFillInstagram /> &nbsp;<AiFillYoutube />  &nbsp; <AiFillLinkedin /></p>
+                        <div style={{ fontSize: '30px' }}><span><FaFacebookF /> </span>&nbsp;<span><AiOutlineTwitter /> </span>&nbsp; <span><AiFillInstagram /></span> &nbsp;<span><AiFillYoutube /></span>  &nbsp;<span> <AiFillLinkedin /></span></div>
                     </Col>
                     <Col md={3} style={{ marginTop: "60px" }}>
                         <h5>WORKING HOUR</h5>
@@ -72,15 +72,15 @@ const Footer = () => {
                     <br />
                   
                     <hr />
-                    <div className='d-flex  mt-5 mb-3 justify-content-between'>
-                        <p className='footer_S'>
+                    <div className=' security_div  mt-5 mb-3 '>
+                        <p className='Copyright_p'>
                             © Copyright PatioTime WordPress Theme for Restaurant & Cafe.
                         </p>
-                        <p>
-                            PRIVACY &nbsp; &nbsp;
-                            TERM OF USE &nbsp; &nbsp;
-                            POLICY
-                        </p>
+                        <div className='privacy_p'>
+                           <span> PRIVACY </span>&nbsp; &nbsp;
+                          <span>  TERM OF USE</span> &nbsp; &nbsp;
+                          <span>  POLICY</span>
+                        </div>
                     </div>
                 </Row>
             </Container>
