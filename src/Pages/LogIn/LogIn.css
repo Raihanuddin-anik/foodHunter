@@ -17,3 +17,39 @@
     line-height: 150%;
     font-size: .85em;
 }
+.Login_page{
+  background-image: url('../../assest/Fotolia_200977622_XL.jpg');
+  background-repeat: no-repeat;
+  max-width:100%; 
+  height:100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: scroll;
+}
+.centered_div{
+  background-color: #fff;
+  /* margin-top: 30px; */
+  border-radius: 10px;
+  padding: 25px;
+  max-width: 80%;
+  margin: 50px  auto;
+  
+}
+.email, .password,.email_Icon,.password_Icon{
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline: none ;
+}
+.email:focus{
+  outline: none !important;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.email_Icon,.password_Icon{
+  background: #fff !important;
+  color: gray;
+  margin-right: -5px ;
+}

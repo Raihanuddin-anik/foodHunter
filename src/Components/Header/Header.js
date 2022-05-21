@@ -12,7 +12,7 @@ const Header = () => {
     return (
         <div className="top_Nav">
             <h6> <GoLocation /> &nbsp; Silk St, Barbican, London EC2Y 8DS, UK</h6>
-            <div><span><BsFillTelephonePlusFill />  +39-055-123456 </span>&nbsp; &nbsp;<span> <AiOutlineMail />  booking@patiotime.com</span></div>
+            <div><span  className='right_nav'><BsFillTelephonePlusFill />  +39-055-123456 </span>&nbsp; &nbsp;<span> <AiOutlineMail />  booking@patiotime.com</span></div>
             
         </div>
     );

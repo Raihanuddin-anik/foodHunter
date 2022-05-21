@@ -4,8 +4,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./LogIn.css";
-import { Col, Container, Row } from 'react-bootstrap';
-import { AiFillGooglePlusCircle } from 'react-icons/ai';
+import { Col, Container, FormControl, InputGroup, Row } from 'react-bootstrap';
+import {BsFacebook,BsGoogle} from 'react-icons/bs';
+import { AiOutlineMail } from 'react-icons/ai';
+import { BiLock } from 'react-icons/bi'
 import { InfoContext } from '../../App';
 import { initializeApp } from "firebase/app";
 
@@ -85,112 +87,94 @@ const LogIn = () => {
             setuser(NewUserInfo);
         }
     }
-    const handleSubmit = (e) => {
+    // const handleSubmit = (e) => {
 
-        console.log(user.email, user.password);
-        if (NewUser && user.email && user.password) {
-            const auth = getAuth();
-            createUserWithEmailAndPassword(auth, user.email, user.password)
-                .then(res => {
-                    const NewUserInfo = { ...user };
-                    NewUserInfo.error = '';
-                    NewUserInfo.success = true;
-                    setuser(NewUserInfo);
-                    console.log(res)
-                })
-                .catch(error => {
-                    // Handle Errors here.
-                    const NewUserInfo = { ...user };
-                    NewUserInfo.success = false;
-                    NewUserInfo.error = error.message;
-                    console.log(error.message)
-                    setuser(NewUserInfo);
-                    // ...
+    //     console.log(user.email, user.password);
+    //     if (NewUser && user.email && user.password) {
+    //         const auth = getAuth();
+    //         createUserWithEmailAndPassword(auth, user.email, user.password)
+    //             .then(res => {
+    //                 const NewUserInfo = { ...user };
+    //                 NewUserInfo.error = '';
+    //                 NewUserInfo.success = true;
+    //                 setuser(NewUserInfo);
+    //                 console.log(res)
+    //             })
+    //             .catch(error => {
+    //                 // Handle Errors here.
+    //                 const NewUserInfo = { ...user };
+    //                 NewUserInfo.success = false;
+    //                 NewUserInfo.error = error.message;
+    //                 console.log(error.message)
+    //                 setuser(NewUserInfo);
+    //                 // ...
 
-                });
-        }
-        if (!NewUser && user.email && user.password) {
-            const auth = getAuth();
-            signInWithEmailAndPassword(auth, user.email, user.password)
-                .then(res => {
-                    const NewUserInfo = { ...user };
-                    NewUserInfo.error = '';
-                    NewUserInfo.success = true;
-                    setuser(NewUserInfo);
-                    setloggedInUser(NewUserInfo);
+    //             });
+    //     }
+    //     if (!NewUser && user.email && user.password) {
+    //         const auth = getAuth();
+    //         signInWithEmailAndPassword(auth, user.email, user.password)
+    //             .then(res => {
+    //                 const NewUserInfo = { ...user };
+    //                 NewUserInfo.error = '';
+    //                 NewUserInfo.success = true;
+    //                 setuser(NewUserInfo);
+    //                 setloggedInUser(NewUserInfo);
 
 
-                })
-                .catch(function (error) {
-                    // Handle Errors here.
-                    const NewUserInfo = { ...user };
-                    NewUserInfo.success = false;
-                    NewUserInfo.error = error.message;
-                    setuser(NewUserInfo);
-                    // ...
-                });
-        }
-        e.preventDefault();
-    }
+    //             })
+    //             .catch(function (error) {
+    //                 // Handle Errors here.
+    //                 const NewUserInfo = { ...user };
+    //                 NewUserInfo.success = false;
+    //                 NewUserInfo.error = error.message;
+    //                 setuser(NewUserInfo);
+    //                 // ...
+    //             });
+    //     }
+    //     e.preventDefault();
+    // }
 
     return (
-        <Container >
+        <div className='Login_page'>
+            <Container>
 
-            <Row className="justify-content-md-center" >
-                <Col md={{ span: 6, offset: 0 }}><Button variant='info' className="w-100 mt-5" onClick={handleSignIn}> <AiFillGooglePlusCircle className="fs-5" />Sing In with Google PopUP </Button></Col>
-            </Row>
-            {/* <Row className="justify-content-md-center" >
-                <Col md={{ span: 6, offset: 0 }}>
-
-                    <Row >
-
-                        <input className="m-auto" type="checkbox" name="NewUser" onClick={() => setNewUser(!NewUser)} id="" />
-                        <br />
-                        <br />
-                        <label className="formItem_label" htmlFor="NewUser">New User Sign up </label>
-                        <br />
-                    </Row>
-
-                    <Form >
-
-                        {NewUser && <Form.Group size="lg" controlId="Name">
-                            <Form.Label>Name</Form.Label>
-                            <Form.Control
-                                type="name"
-                                placeholder="Enter Your Name"
-
-                            />
-                        </Form.Group>
+                <Row className="justify-content-md-center row " >
+                    <Col md={{ span: 5, offset: 0 }} className="centered_div">
+                        <h2 className='text-center mt-5 bt-5'>Login</h2>
+                        <Form >
+                            <Form.Label htmlFor="basic-url">Email</Form.Label>
+                            <InputGroup className="mb-3">
+                                <InputGroup.Text className="email_Icon"><AiOutlineMail /></InputGroup.Text>
+                                <FormControl className="email" placeholder='Enter Your Email' />
+                            </InputGroup>
+                            <Form.Label htmlFor="basic-url">Password</Form.Label>
+                            <InputGroup className="mb-3">
+                                <InputGroup.Text className="password_Icon"><BiLock /></InputGroup.Text>
+                                <FormControl className="password" placeholder='Enter Your Email' />
+                            </InputGroup>
+                            <p style={{ color: 'red' }}>{user.error}</p>
+                        {
+                            user.success && <p style={{ color: 'green' }}> User {NewUser ? "Create" : "logIn"} successfully</p>
                         }
-                        <Form.Group size="lg" controlId="email">
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control
-                                name="email"
-                                required
-                                onBlur={handleCheckEmailPassword}
+                            <Button className="mt-2 w-100" size="lg" type="submit" >
+                                Login
+                            </Button>
+                            <p>Or SignUp Using s</p>
+                            <div>
+                                <span><BsGoogle/></span>
+                                <span><BsFacebook/></span>
+                                <span></span>
+                            </div>
+                        </Form>
 
-                            />
-                        </Form.Group>
-                        <Form.Group size="lg" controlId="password">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control
-                                name="password"
-                                onBlur={handleCheckEmailPassword}
-                                required
-                            />
-                        </Form.Group>
-                        <Button className="mt-2 w-100" size="lg" onClick={handleSubmit} type="submit" >
-                            Login
-                        </Button>
-                    </Form>
-                    <p style={{ color: 'red' }}>{user.error}</p>
-                    {
-                        user.success && <p style={{ color: 'green' }}> User {NewUser ? "Create" : "logIn"} successfully</p>
-                    }
+                       
 
-                </Col>
-            </Row> */}
-        </Container>
+                        {/* <Col md={{ span: 6, offset: 0 }}><Button variant='info' className="w-100 mt-5" onClick={handleSignIn}> <AiFillGooglePlusCircle className="fs-5" />Sing In with Google PopUP </Button></Col> */}
+                    </Col>
+                </Row>
+            </Container>
+        </div>
     );
 };
 
