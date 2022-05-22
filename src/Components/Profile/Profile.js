@@ -1,11 +1,26 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { Form, Image, Button } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 import { auth } from '../../Pages/LogIn/LogIn';
 
 const Profile = () => {
     const [user] = useAuthState(auth);
-    
+    let navigate = useNavigate();
+    const handleSingOut = () => {
+        signOut (auth)
+            .then(res => {
+               console.log(res)
+               navigate('/')
+               window.location.reload()
+                }
+             )
+            .catch(err => {
+              console.log(err)
+            })
+           
+    }
  
     return (
         <div>
@@ -25,7 +40,7 @@ const Profile = () => {
                     <Form.Control type="number" value={user.phoneNumber} />
                 </Form.Group>
                 <Button className="w-100">Save</Button>
-               
+                <Button variant="danger" onClick={handleSingOut} className="w-100 mt-2">LogOut</Button>
             </Form>
         </div>
     );

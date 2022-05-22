@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Container, Row } from 'react-bootstrap';
+import { Button, Container, Row, Spinner } from 'react-bootstrap';
 import customHook from '../../Hooks/customHook';
 import MealService from '../../Services/MealService';
 import Banner from '../../Components/Banner/Banner';
@@ -39,6 +39,11 @@ const Home = () => {
                     <button className="btn2">{slicedData.length}</button>
                     <button onClick={() => setLastNumber(lastNumber + 1)} className="arrowBtn">< IoIosArrowForward /></button>
                 </div>
+                {slicedData.length == 0 &&<div className='text-center'>
+                    <Spinner className='text-center' animation="border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                </div>}
                 <Row>
                     {
                         slicedData?.map((meal) => (
@@ -47,8 +52,8 @@ const Home = () => {
                         ))
                     }
                 </Row>
-                </Container>
-                <Ingredient />
+            </Container>
+            <Ingredient />
             <Shefs />
             <Footer />
 

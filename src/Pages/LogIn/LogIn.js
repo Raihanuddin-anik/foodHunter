@@ -44,11 +44,11 @@ const LogIn = () => {
 
     const [loggedInUser, setloggedInUser] = useContext(InfoContext);
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const location = useLocation();
 
     let from = location.state?.from?.pathname || '/';
-    // navigate(from, { replace: true });
+    navigate(from, { replace: true });
     const provider = new GoogleAuthProvider();
     const handleSignIn = () => {
         signInWithPopup(auth, provider)
@@ -173,7 +173,7 @@ const LogIn = () => {
 
                         </Form>
                         <div className="text-center">
-                            <span className='icon_one'><BsGoogle /></span>
+                            <span className='icon_one' onClick={handleSignIn}><BsGoogle /></span>
                             <span className='icon_two'><BsFacebook /></span>
                             <span className='icon_three'><AiFillTwitterCircle /></span>
                         </div>

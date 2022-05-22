@@ -37,8 +37,8 @@ const Banner = () => {
                     <label className="logo">FoodX</label>
                     <ul>
                         <li> <Link className='nav_item' to='/'>Home</Link></li>
-                        <li> <Link className='nav_item' to='/profile'>Profile</Link></li>
-                        <li><Link className='nav_item' to='/login'> {user?.displayName} </Link></li>
+                        <li className='nav_item'> About</li>
+                        <li>{user?<Link className='nav_item' to='/profile'> {user?.displayName} </Link>: <Link className='nav_item' to='/login'>LogIn </Link>}</li>
                         <li><Link className='nav_item' to='/foodCart'>{cart.length} <AiOutlineShoppingCart /></Link></li>
                     </ul>
                   

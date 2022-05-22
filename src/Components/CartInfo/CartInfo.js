@@ -1,13 +1,13 @@
 import { Button } from 'react-bootstrap';
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RemoveFromCart } from '../../redux/actions/CartActions';
 import { Link } from 'react-router-dom';
+import {AiFillDelete} from 'react-icons/ai';
 
-const CartInfo = ({payment,PlaceOrder}) => {
-console.log("show", payment)
+const CartInfo = ({ payment, PlaceOrder }) => {
+    console.log("show", payment)
     const cart = useSelector((state) => state.cartReducers);
-    console.log(cart)
     const dispatch = useDispatch()
     const total = cart.reduce((total, prd) => total + parseInt(prd.id), 0);
     return (
@@ -17,20 +17,22 @@ console.log("show", payment)
                 <div style={{ alignItems: "center" }}>
 
                     {cart.map((data) => <div style={{ backgroundColor: "rgb(245, 241, 241)", borderRadius: "10px" }} className="d-flex mt-2 p-2">
-                        <div className="d-flex">
+                        <div className="d-flex justify-content-between">
                             <img className='w-25 Meal_thumb' src={data.ImgUrl} />
-                            <div className="p-2 ms-2">
+                         
+                            <div className='text-center'>
                                 <small>{data.Name}</small>
-                                <br />
+                                <br/>
                                 <b>{data.id}$</b>
-
+                                <p> portion : {data.count}</p>
+                                
                             </div>
-                            <small style={{ marginTop: "44px", marginRight: "8px" }}>{data.count}  </small>
-                            <Button style={{ width: "40%", height: "40px" }} onClick={() => dispatch(RemoveFromCart(data.newId))}>Remove</Button>
-                           
+                            
+                            <AiFillDelete style={{color:"red", marginTop:"10px",fontSize:"30px",cursor:"pointer"}} onClick={() => dispatch(RemoveFromCart(data.newId))}>Remove</AiFillDelete>
+
                         </div>
 
-                      
+
 
                     </div>)}
 
@@ -73,7 +75,7 @@ console.log("show", payment)
                         </div>
                     </div>
                 </div>
-               <Button onClick={()=>PlaceOrder()} disabled={!payment} variant="success"  className="w-100"><Link to="/success">Place</Link></Button>
+                <Button onClick={() => PlaceOrder()} disabled={!payment} variant="success" className="w-100"><Link to="/success">Place</Link></Button>
             </div>
 
         </div>
