@@ -1,30 +1,52 @@
 import axios from 'axios';
-import React, { useEffect, useState,useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import OthersMeal from '../OthersMeal/OthersMeal';
 import { BsEmojiSmile, BsBoxArrowInRight } from 'react-icons/bs';
+import { AiOutlinePlus } from 'react-icons/ai';
+import { AiOutlineMinus } from 'react-icons/ai'
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {cartContext} from '../../App'
 import { useDispatch } from 'react-redux';
 import { AddToCart } from '../../redux/actions/CartActions';
+import './EachDetails.css';
 
 const EachDetails = ({ Ig }) => {
     const catagory = Ig.strCategory;
+    console.log(Ig)
     const id = Ig.idMeal
     const [IgData, setIgData] = useState([]);
-    const [cartItem, setCartItem] = useContext(cartContext);
-  const dispatch =  useDispatch()
+    const dispatch = useDispatch()
+    const [count, setcount] = useState(1);
+    const handleIncrease = () => {
+
+        const newCount = Object.keys({ matchData: Ig }).length;
+        console.log(newCount)
+        const TotalCount = newCount + count * 1;
+
+        ;
+        setcount(TotalCount)
+    }
+    const handleDecrease = () => {
+
+        const TotalCount = count - 1;
+        if (TotalCount < 0) {
+            return 0
+        }
+        else {
+            setcount(TotalCount)
+        }
+    }
     const notify = () => toast("Added To Card!");
-    
+
     useEffect(() => {
         axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${catagory}`)
             .then((response) => {
                 // handle success
                 setIgData(response.data.meals);
             })
-            
+
 
     }, [catagory])
 
@@ -34,7 +56,7 @@ const EachDetails = ({ Ig }) => {
     //     setCartItem(Multiple)
     //     notify()
     //   }
-   
+
 
     return (
         <>
@@ -57,7 +79,12 @@ const EachDetails = ({ Ig }) => {
                         pauseOnFocusLoss
                         draggable
                         pauseOnHover />
-                    <Button onClick={()=>dispatch(AddToCart(Ig),notify())}>Add to cart</Button>
+
+                    <span className="cart"><AiOutlineMinus style={{ cursor: "pointer" }} onClick={() => handleDecrease()} />  <b className="p-3">{count}</b>
+                        <AiOutlinePlus style={{ cursor: "pointer" }} onClick={() => handleIncrease()} />  </span>
+                    <br />
+                    <br />
+                    <Button className='w-50' onClick={() => dispatch(AddToCart(Ig,count), notify())}>Add to cart</Button>
                     <h5 style={{
                         color: "white", marginTop: "20px"
                     }}> Wanna Make Yourself ? <BsEmojiSmile /></h5>

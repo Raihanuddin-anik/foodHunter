@@ -36,7 +36,7 @@
   margin: 50px  auto;
   
 }
-.email, .password,.email_Icon,.password_Icon{
+.email, .password, .name,.email_Icon,.password_Icon,.name_Icon{
   border-top: none;
   border-left: none;
   border-right: none;
@@ -48,8 +48,29 @@
   border-left: none;
   border-right: none;
 }
-.email_Icon,.password_Icon{
+.email_Icon,.password_Icon,.name_Icon{
   background: #fff !important;
   color: gray;
   margin-right: -5px ;
+}
+.icon_one{
+  background-color: brown;
+  color: white;
+  padding:2px 7px 7px 7px ;
+  border-radius: 20px;
+  margin: 2px;
+}
+.icon_two{
+  background-color: rgb(38, 36, 159);
+  color: white;
+  padding:2px 7px 7px 7px ;
+  border-radius: 20px;
+  margin: 2px;
+}
+.icon_three{
+  background-color: rgb(189, 129, 17);
+  color: white;
+  padding:2px 7px 7px 7px ;
+  border-radius: 20px;
+  margin: 2px;
 }

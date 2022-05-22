@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 const CartInfo = ({payment,PlaceOrder}) => {
 console.log("show", payment)
     const cart = useSelector((state) => state.cartReducers);
+    console.log(cart)
     const dispatch = useDispatch()
     const total = cart.reduce((total, prd) => total + parseInt(prd.id), 0);
     return (
@@ -24,10 +25,12 @@ console.log("show", payment)
                                 <b>{data.id}$</b>
 
                             </div>
+                            <small style={{ marginTop: "44px", marginRight: "8px" }}>{data.count}  </small>
                             <Button style={{ width: "40%", height: "40px" }} onClick={() => dispatch(RemoveFromCart(data.newId))}>Remove</Button>
+                           
                         </div>
 
-                        <small style={{ marginTop: "44px", marginRight: "8px" }}>  </small>
+                      
 
                     </div>)}
 

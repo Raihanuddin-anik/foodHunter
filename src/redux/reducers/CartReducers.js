@@ -1,6 +1,6 @@
 import { ADD_TO_CART, REMOVE_FROM_CART } from "../actions/CartActions";
 
-const cartReducers = (state = [], action) => {
+const cartReducers = (state = [], action ) => {
    switch(action.type){
        case ADD_TO_CART:
            const CartItem ={
@@ -8,7 +8,8 @@ const cartReducers = (state = [], action) => {
                Name : action.payload.strMeal,
                ImgUrl: action.payload.strMealThumb,
                Area : action.payload.strArea,
-               newId : state.length + 1
+               newId : state.length + 1,
+               count : action.count
 
            }
        return  [...state , CartItem]

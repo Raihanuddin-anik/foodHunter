@@ -29,7 +29,7 @@ const Banner = () => {
 
         <div className="Banner" >
             <Header/>
-            <nav >
+            <nav>
                 <input type="checkbox" id="check"/>
                     <label for="check" className="checkbtn">
                         <AiOutlineBars/>
@@ -43,8 +43,8 @@ const Banner = () => {
                     </ul>
                   
             </nav>
-
-
+          
+        
         </div>
 
 
