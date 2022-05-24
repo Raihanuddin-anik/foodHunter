@@ -1,5 +1,5 @@
 import { Button } from 'react-bootstrap';
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RemoveFromCart } from '../../redux/actions/CartActions';
 import { Link } from 'react-router-dom';

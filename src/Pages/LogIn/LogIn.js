@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react';
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import React, { useState } from 'react';
+import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { useLocation, useNavigate } from 'react-router-dom';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -10,7 +10,6 @@ import { AiOutlineMail } from 'react-icons/ai';
 import { BiLock } from 'react-icons/bi';
 import { AiFillTwitterCircle } from 'react-icons/ai';
 import { CgProfile } from 'react-icons/cg'
-import { InfoContext } from '../../App';
 import { initializeApp } from "firebase/app";
 
 
@@ -33,7 +32,7 @@ const LogIn = () => {
 
 
     const auth = getAuth();
-    const [NewUser, setNewUser] = useState(false);
+    const [NewUser, setNewUser] = useState(true);
     const [user, setuser] = useState({
         isSignedIn: false,
         name: '',
@@ -41,14 +40,13 @@ const LogIn = () => {
         password: '',
         photo: ''
     })
-
-    const [loggedInUser, setloggedInUser] = useContext(InfoContext);
-
+ console.log(user)
+    
     const navigate = useNavigate();
     const location = useLocation();
 
     let from = location.state?.from?.pathname || '/';
-    navigate(from, { replace: true });
+   
     const provider = new GoogleAuthProvider();
     const handleSignIn = () => {
         signInWithPopup(auth, provider)
@@ -61,8 +59,7 @@ const LogIn = () => {
                     photo: photoURL,
                 }
                 setuser(UserSignIn)
-                setloggedInUser(UserSignIn)
-
+                navigate(from, { replace: true });
             })
             .catch(err => {
                 console.log(err);
@@ -89,84 +86,84 @@ const LogIn = () => {
             setuser(NewUserInfo);
         }
     }
-    // const handleSubmit = (e) => {
+    const handleSubmit = (e) => {
 
-    //     console.log(user.email, user.password);
-    //     if (NewUser && user.email && user.password) {
-    //         const auth = getAuth();
-    //         createUserWithEmailAndPassword(auth, user.email, user.password)
-    //             .then(res => {
-    //                 const NewUserInfo = { ...user };
-    //                 NewUserInfo.error = '';
-    //                 NewUserInfo.success = true;
-    //                 setuser(NewUserInfo);
-    //                 console.log(res)
-    //             })
-    //             .catch(error => {
-    //                 // Handle Errors here.
-    //                 const NewUserInfo = { ...user };
-    //                 NewUserInfo.success = false;
-    //                 NewUserInfo.error = error.message;
-    //                 console.log(error.message)
-    //                 setuser(NewUserInfo);
-    //                 // ...
+        console.log(user.email, user.password);
+        if (NewUser && user.email && user.password) {
+            const auth = getAuth();
+            createUserWithEmailAndPassword(auth, user.email, user.password)
+                .then(res => {
+                    const NewUserInfo = { ...user };
+                    NewUserInfo.error = '';
+                    NewUserInfo.success = true;
+                    setuser(NewUserInfo);
+                    console.log(res)
+                })
+                .catch(error => {
+                    // Handle Errors here.
+                    const NewUserInfo = { ...user };
+                    NewUserInfo.success = false;
+                    NewUserInfo.error = error.message;
+                    console.log(error.message)
+                    setuser(NewUserInfo);
+                    // ...
 
-    //             });
-    //     }
-    //     if (!NewUser && user.email && user.password) {
-    //         const auth = getAuth();
-    //         signInWithEmailAndPassword(auth, user.email, user.password)
-    //             .then(res => {
-    //                 const NewUserInfo = { ...user };
-    //                 NewUserInfo.error = '';
-    //                 NewUserInfo.success = true;
-    //                 setuser(NewUserInfo);
-    //                 setloggedInUser(NewUserInfo);
+                });
+        }
+        if (!NewUser && user.email && user.password) {
+            const auth = getAuth();
+            signInWithEmailAndPassword(auth, user.email, user.password)
+                .then(res => {
+                    const NewUserInfo = { ...user };
+                    NewUserInfo.error = '';
+                    NewUserInfo.success = true;
+                    setuser(NewUserInfo);
+                    navigate(from, { replace: true });
 
 
-    //             })
-    //             .catch(function (error) {
-    //                 // Handle Errors here.
-    //                 const NewUserInfo = { ...user };
-    //                 NewUserInfo.success = false;
-    //                 NewUserInfo.error = error.message;
-    //                 setuser(NewUserInfo);
-    //                 // ...
-    //             });
-    //     }
-    //     e.preventDefault();
-    // }
+                })
+                .catch(function (error) {
+                    // Handle Errors here.
+                    const NewUserInfo = { ...user };
+                    NewUserInfo.success = false;
+                    NewUserInfo.error = error.message;
+                    setuser(NewUserInfo);
+                    // ...
+                });
+        }
+        e.preventDefault();
+    }
 
     return (
         <div className='Login_page'>
-            <Container>
+            <Container >
 
-                <Row className="justify-content-md-center row " >
+                <Row className="justify-content-md-center row  " >
                     <Col md={{ span: 5, offset: 0 }} className="centered_div">
-                        {NewUser?<h2 className='text-center mt-5 bt-5'>Login</h2>: <h2 className='text-center mt-5 bt-5'>Login</h2>}
+                        {NewUser?<h2 className='text-center mt-5 bt-5'>Register</h2>: <h2 className='text-center mt-5 bt-5'>LogIn</h2>}
                         <Form >
                             {NewUser ?
                                 <div>
                                     <Form.Label htmlFor="basic-url">Name</Form.Label>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Text className="name_Icon"><CgProfile /></InputGroup.Text>
-                                        <FormControl className="name" placeholder='Enter Your Email' />
+                                        <FormControl className="name" name="name"  onBlur={handleCheckEmailPassword} placeholder='Enter Your Email' />
                                     </InputGroup> </div> : ''}
                             <Form.Label htmlFor="basic-url">Email</Form.Label>
                             <InputGroup className="mb-3">
                                 <InputGroup.Text className="email_Icon"><AiOutlineMail /></InputGroup.Text>
-                                <FormControl className="email" placeholder='Enter Your Email' />
+                                <FormControl className="email"f name="email"  onBlur={handleCheckEmailPassword} placeholder='Enter Your Email' />
                             </InputGroup>
                             <Form.Label htmlFor="basic-url">Password</Form.Label>
                             <InputGroup className="mb-3">
                                 <InputGroup.Text className="password_Icon"><BiLock /></InputGroup.Text>
-                                <FormControl className="password" placeholder='Enter Your Email' />
+                                <FormControl className="password" name="password"  onBlur={handleCheckEmailPassword} placeholder='Enter Your Email' />
                             </InputGroup>
                             <p style={{ color: 'red' }}>{user.error}</p>
                             {
                                 user.success && <p style={{ color: 'green' }}> User {NewUser ? "Create" : "logIn"} successfully</p>
                             }
-                            <Button className="mt-2 w-100" size="lg" type="submit" >
+                            <Button className="mt-2 w-100" onClick={handleSubmit}  size="lg" type="submit" >
                                 Login
                             </Button>
                             <p className="mt-5 text-center">Or SignUp Using </p>
@@ -178,7 +175,7 @@ const LogIn = () => {
                             <span className='icon_three'><AiFillTwitterCircle /></span>
                         </div>
                         <p className="mt-5 text-center">Or SignUp Using </p>
-                        {NewUser ? <h6 style={{ cursor: "pointer" }} onClick={() => setNewUser(false)} className="text-center"> LOGIN</h6> : <h6 style={{ cursor: "pointer" }} onClick={() => setNewUser(true)} className="text-center"> SIGN UP</h6>}
+                        {NewUser ? <h6 style={{ cursor: "pointer" }} onClick={() => setNewUser(false)} className="text-center"> LogIn</h6> : <h6 style={{ cursor: "pointer" }} onClick={() => setNewUser(true)} className="text-center"> SignUp</h6>}
                         {/* <Col md={{ span: 6, offset: 0 }}><Button variant='info' className="w-100 mt-5" onClick={handleSignIn}> <AiFillGooglePlusCircle className="fs-5" />Sing In with Google PopUP </Button></Col> */}
                     </Col>
                 </Row>

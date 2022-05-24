@@ -4,7 +4,6 @@ import { BsCheckLg } from 'react-icons/bs';
 import { ImCross } from 'react-icons/im';
 import MakePayment from '../Payment/MakePayment';
 import { FaCreditCard } from 'react-icons/fa';
-
 import './Address.css'
 import { auth } from '../../Pages/LogIn/LogIn';
 import { useAuthState } from 'react-firebase-hooks/auth';

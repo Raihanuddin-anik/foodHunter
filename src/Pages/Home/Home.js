@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Container, Row, Spinner } from 'react-bootstrap';
-import customHook from '../../Hooks/customHook';
-import MealService from '../../Services/MealService';
+import {  Container, Row, Spinner } from 'react-bootstrap';
 import Banner from '../../Components/Banner/Banner';
-import Header from '../../Components/Header/Header';
 import Meals from '../../Components/Meals/Meals';
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io'
 import axios from 'axios';
 import Ingredient from '../../Components/Ingredient/Ingredient';
 import Shefs from '../../Components/Shefs/Shefs';
-import Shef from '../../RandomMeals';
 import './Home.css'
 import Footer from '../../Components/Footer/Footer';
 

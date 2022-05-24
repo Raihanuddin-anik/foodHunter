@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Col, Spinner } from 'react-bootstrap';
+import { Card, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 const Meals = ({ meal }) => {
     console.log(meal)

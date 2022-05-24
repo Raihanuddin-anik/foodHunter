@@ -1,9 +1,6 @@
-import React, { useContext } from 'react';
-import { CardImg, Container, Image, Nav, Navbar } from 'react-bootstrap';
-import image from '../../assest/p-logo.png';
+import React from 'react';
 import { GoLocation } from "react-icons/go";
 import { BsFillTelephonePlusFill } from 'react-icons/bs'
-import { Link } from 'react-router-dom';
 import {AiOutlineMail} from 'react-icons/ai'
 import './Header.css';
 

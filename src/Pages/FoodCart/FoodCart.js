@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
-import { Container, Table, Row, Col, Image, Button } from 'react-bootstrap';
-import { AiFillDelete } from 'react-icons/ai'
+import { Container,  Row, Col } from 'react-bootstrap';
 import './FoodCart.css'
-// import { cartContext } from '../../App'
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { RemoveFromCart } from '../../redux/actions/CartActions';
+import {useSelector } from 'react-redux';
 import CartInfo from '../../Components/CartInfo/CartInfo';
 import Address from '../../Components/Address/Address';
 import Banner from '../../Components/Banner/Banner';

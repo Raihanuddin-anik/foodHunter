@@ -1,8 +1,6 @@
-import react, { useState } from 'react';
+import  { useState } from 'react';
 import { CardElement,useElements,useStripe } from '@stripe/react-stripe-js';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faMoneyBillAlt } from '@fortawesome/free-solid-svg-icons';
-import {FaCreditCard} from 'react-icons/fa'
+
 import { Button } from 'react-bootstrap';
 
 

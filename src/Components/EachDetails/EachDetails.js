@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import OthersMeal from '../OthersMeal/OthersMeal';
 import { BsEmojiSmile, BsBoxArrowInRight } from 'react-icons/bs';
